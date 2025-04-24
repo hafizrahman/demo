@@ -10,7 +10,7 @@ import {
 } from 'use-file-picker/validators';
 
 interface FilePickerProps {
-    handleSuccesfulSelection(imageBase64: string): void;
+    handleSuccesfulSelection(imageFile: File): void;
 }
 
 export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps) {
@@ -23,8 +23,8 @@ export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps
             new FileTypeValidator(['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG']),
         ],
         onFilesSuccessfullySelected: ({ plainFiles, filesContent }) => {
-            handleSuccesfulSelection(filesContent[0].content)
-            console.log('onFilesSuccessfullySelected', filesContent[0].content);
+            handleSuccesfulSelection(plainFiles[0])
+            console.log('onFilesSuccessfullySelected', plainFiles[0]);
         },
     });
 
