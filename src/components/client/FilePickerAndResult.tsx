@@ -45,8 +45,8 @@ export default function FilePickerAndResult() {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                  imageBase64: base64Image,
-                  prompt: "What's in this image?",
+                  imageBase64: base64,
+                  prompt: "do a seasonal skin tone analysis,evaluate the image for the person skin undertone (cool, warm, or neutral), depth (light, medium, deep), and contrast between skin, eyes, and hair",
                 }),
               });
               
@@ -80,12 +80,6 @@ export default function FilePickerAndResult() {
                 </form>
             </Card>
             <div>
-                {base64Image && (
-                    <>
-                        <ColorProfileSection colorProfile={randomItem} />
-                    </>
-                )}
-
                 {aiResponse && (
                     <div className="not-prose overflow-auto rounded-lg bg-white outline outline-black/5 dark:bg-gray-950/50 p-2">
                         <h3 className="text-2xl font-bold">AI Response</h3>

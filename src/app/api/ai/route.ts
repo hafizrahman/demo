@@ -21,13 +21,18 @@ export async function POST(req: NextRequest) {
         const { imageBase64, prompt }: RequestBody = await req.json();
         
         const response = await openai.responses.create({
-            model: "gpt-4o-mini",
+            //model: "gpt-4o-mini",
+            model: "gpt-4.1-mini",
             input: [
                 {
                     role: "user",
                     content: [
-                        { type: "input_text", text: prompt || "What's in this image?" },
-                        //{ type: "input_image", image_url: { url: `data:image/jpeg;base64,${imageBase64}` } }
+                        { type: "input_text", text: prompt },
+                        {
+                            type: "input_image",
+                            image_url: `${imageBase64}`,
+                            detail: "low"
+                        }
                     ],
                 },
             ],
