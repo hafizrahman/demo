@@ -11,7 +11,25 @@ export default function FilePickerAndResult() {
     const [selectedFile, setSelectedFile] = useState<File>();
     const [base64Image, setBase64Image] = useState<string>();
     const [aiResponse, setAiResponse] = useState<string>();
+    const [colorProfileInfo, setColorProfileInfo] = useState<any>();
     const randomItem = seasonalColorProfiles[Math.floor(Math.random() * seasonalColorProfiles.length)];
+
+    const seasonalColorAnalysisPrompt = `Analyze the skin tone in this image and determine which of the 12 seasonal color archetypes it most closely matches. The archetypes are:
+
+- light-spring: Warm undertones with light, delicate features and low contrast
+- true-spring: Clear, warm undertones with a vibrant, sunny appearance
+- bright-spring: High contrast with warm undertones and clear, bright features
+- light-summer: Cool undertones with light and soft features
+- true-summer: Cool undertones with soft, blended coloring and lower contrast
+- soft-summer: Muted cool tones with a soft, gentle appearance and low contrast
+- soft-autumn: Warm, muted tones with a soft and low-contrast look
+- true-autumn: Warm undertones with rich, earthy coloring and medium contrast
+- deep-autumn: Dark and rich with warm undertones and deep hair/eye contrast
+- deep-winter: Cool undertones with high contrast and rich, deep coloring
+- true-winter: Cool, crisp undertones with bold, high-contrast coloring
+- bright-winter: Cool undertones with high clarity and vibrant contrasts
+
+Respond with ONLY one of these IDs (e.g., "light-spring"). If you cannot detect a clear skin tone or cannot analyze the image, respond with only "none". Do not include any explanations, justifications, or additional text in your response.`;
 
     const resizeImageToBase64 = (file: File): Promise<string> => {
         return new Promise((resolve) => {
@@ -33,27 +51,29 @@ export default function FilePickerAndResult() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!selectedFile) return;
-
+    
         try {
             const base64 = await resizeImageToBase64(selectedFile);
             setBase64Image(base64);
             console.log("Base64 ready:", base64);
-
+    
             const result = await fetch('/api/ai', {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                  imageBase64: base64,
-                  prompt: "do a seasonal skin tone analysis,evaluate the image for the person skin undertone (cool, warm, or neutral), depth (light, medium, deep), and contrast between skin, eyes, and hair",
+                    imageBase64: base64,
+                    prompt: seasonalColorAnalysisPrompt,
+                    isDemo: true, // Set to true for demo mode, false for real API call
                 }),
-              });
-              
-              const data = await result.json();
-              console.log(data.result);
-              setAiResponse(data.result);
-
+            });
+    
+            const data = await result.json();
+            console.log(data.result);
+            setAiResponse(data.result);
+            setColorProfileInfo(seasonalColorProfiles.find(profile => profile.id === data.result));
+            
         } catch (err) {
             console.error("Image processing failed:", err);
         }
@@ -85,6 +105,12 @@ export default function FilePickerAndResult() {
                         <h3 className="text-2xl font-bold">AI Response</h3>
                         <p>{aiResponse}</p>
                     </div>
+                )}
+
+                {colorProfileInfo && (
+                    <ColorProfileSection
+                        colorProfile={colorProfileInfo}
+                    />
                 )}
             </div>
         </>
