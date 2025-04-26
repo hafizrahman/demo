@@ -5,6 +5,7 @@ const seasonalColorProfiles = [
       undertone: "warm",
       description: "Warm undertones with light, delicate features and low contrast.",
       estimatedPopulationPercent: 6,
+      metalAccents: "light gold, rose gold, brass",
       colors: [
         { name: "Peach", hex: "#FFDAB9" },
         { name: "Coral", hex: "#FF7F50" },
@@ -12,7 +13,8 @@ const seasonalColorProfiles = [
         { name: "Sky Blue", hex: "#87CEEB" },
         { name: "Lavender", hex: "#E6E6FA" },
         { name: "Butter Yellow", hex: "#FFFACD" },
-        { name: "Light Aqua", hex: "#A2E8E0" }
+        { name: "Light Aqua", hex: "#A2E8E0" },
+        { name: "Apricot", hex: "#FBCEB1" }
       ]
     },
     {
@@ -21,6 +23,7 @@ const seasonalColorProfiles = [
       undertone: "warm",
       description: "Clear, warm undertones with a vibrant, sunny appearance.",
       estimatedPopulationPercent: 7,
+      metalAccents: "warm gold, bronze, copper",
       colors: [
         { name: "Goldenrod", hex: "#DAA520" },
         { name: "Warm Coral", hex: "#FF6F61" },
@@ -28,7 +31,8 @@ const seasonalColorProfiles = [
         { name: "Turquoise", hex: "#40E0D0" },
         { name: "Tomato Red", hex: "#FF6347" },
         { name: "Warm Beige", hex: "#F5DEB3" },
-        { name: "Light Teal", hex: "#B2D8D8" }
+        { name: "Light Teal", hex: "#B2D8D8" },
+        { name: "Peach Orange", hex: "#FFCC99" }
       ]
     },
     {
@@ -37,6 +41,7 @@ const seasonalColorProfiles = [
       undertone: "warm",
       description: "High contrast with warm undertones and clear, bright features.",
       estimatedPopulationPercent: 7,
+      metalAccents: "yellow gold, bright bronze",
       colors: [
         { name: "Bright Pink", hex: "#FF69B4" },
         { name: "Lime Green", hex: "#32CD32" },
@@ -44,7 +49,8 @@ const seasonalColorProfiles = [
         { name: "Sunshine Yellow", hex: "#FFD700" },
         { name: "Tomato", hex: "#FF6347" },
         { name: "Ivory", hex: "#FFFFF0" },
-        { name: "Cobalt Blue", hex: "#0047AB" }
+        { name: "Cobalt Blue", hex: "#0047AB" },
+        { name: "Bright Coral", hex: "#FF5A5F" }
       ]
     },
     {
@@ -53,6 +59,7 @@ const seasonalColorProfiles = [
       undertone: "cool",
       description: "Cool undertones with light and soft features.",
       estimatedPopulationPercent: 8,
+      metalAccents: "silver, white gold, platinum",
       colors: [
         { name: "Powder Blue", hex: "#B0E0E6" },
         { name: "Soft Pink", hex: "#FFB6C1" },
@@ -60,7 +67,8 @@ const seasonalColorProfiles = [
         { name: "Mint", hex: "#AAF0D1" },
         { name: "Lavender Mist", hex: "#E6E6FA" },
         { name: "Soft Gray", hex: "#D3D3D3" },
-        { name: "Ice Blue", hex: "#D0F0FD" }
+        { name: "Ice Blue", hex: "#D0F0FD" },
+        { name: "Blush Pink", hex: "#FFDDDD" }
       ]
     },
     {
@@ -69,6 +77,7 @@ const seasonalColorProfiles = [
       undertone: "cool",
       description: "Cool undertones with soft, blended coloring and lower contrast.",
       estimatedPopulationPercent: 9,
+      metalAccents: "silver, white gold, pewter",
       colors: [
         { name: "Rose", hex: "#FFC0CB" },
         { name: "Wisteria", hex: "#C9A0DC" },
@@ -76,7 +85,8 @@ const seasonalColorProfiles = [
         { name: "Mauve", hex: "#E0B0FF" },
         { name: "Cool Gray", hex: "#A9A9A9" },
         { name: "Periwinkle", hex: "#CCCCFF" },
-        { name: "Ocean Blue", hex: "#4F94CD" }
+        { name: "Ocean Blue", hex: "#4F94CD" },
+        { name: "Dusty Plum", hex: "#9C8AA4" }
       ]
     },
     {
@@ -85,6 +95,7 @@ const seasonalColorProfiles = [
       undertone: "neutral-cool",
       description: "Muted cool tones with a soft, gentle appearance and low contrast.",
       estimatedPopulationPercent: 8,
+      metalAccents: "brushed silver, pewter, rose gold",
       colors: [
         { name: "Dusty Rose", hex: "#DCAE96" },
         { name: "Sage", hex: "#B2AC88" },
@@ -92,7 +103,8 @@ const seasonalColorProfiles = [
         { name: "Plum", hex: "#8E4585" },
         { name: "Soft Navy", hex: "#5D6D7E" },
         { name: "Stone Gray", hex: "#A9A9A9" },
-        { name: "Warm Silver", hex: "#C0C0C0" }
+        { name: "Warm Silver", hex: "#C0C0C0" },
+        { name: "Muted Lavender", hex: "#B19CD9" }
       ]
     },
     {
@@ -101,6 +113,7 @@ const seasonalColorProfiles = [
       undertone: "neutral-warm",
       description: "Warm, muted tones with a soft and low-contrast look.",
       estimatedPopulationPercent: 8,
+      metalAccents: "antique gold, copper, bronze, rose gold",
       colors: [
         { name: "Olive Green", hex: "#808000" },
         { name: "Burnt Coral", hex: "#E9967A" },
@@ -108,7 +121,8 @@ const seasonalColorProfiles = [
         { name: "Warm Taupe", hex: "#D2B48C" },
         { name: "Mustard", hex: "#FFDB58" },
         { name: "Dusty Teal", hex: "#669999" },
-        { name: "Saddle Brown", hex: "#8B4513" }
+        { name: "Saddle Brown", hex: "#8B4513" },
+        { name: "Muted Rust", hex: "#B87333" }
       ]
     },
     {
@@ -117,6 +131,7 @@ const seasonalColorProfiles = [
       undertone: "warm",
       description: "Warm undertones with rich, earthy coloring and medium contrast.",
       estimatedPopulationPercent: 9,
+      metalAccents: "gold, copper, bronze, brass",
       colors: [
         { name: "Rust", hex: "#B7410E" },
         { name: "Pumpkin", hex: "#FF7518" },
@@ -124,7 +139,8 @@ const seasonalColorProfiles = [
         { name: "Camel", hex: "#C19A6B" },
         { name: "Forest Green", hex: "#228B22" },
         { name: "Marigold", hex: "#FFD700" },
-        { name: "Mahogany", hex: "#C04000" }
+        { name: "Mahogany", hex: "#C04000" },
+        { name: "Warm Chocolate", hex: "#7B3F00" }
       ]
     },
     {
@@ -133,6 +149,7 @@ const seasonalColorProfiles = [
       undertone: "warm",
       description: "Dark and rich with warm undertones and deep hair/eye contrast.",
       estimatedPopulationPercent: 8,
+      metalAccents: "dark gold, antiqued bronze, copper",
       colors: [
         { name: "Espresso", hex: "#3B2F2F" },
         { name: "Auburn", hex: "#A52A2A" },
@@ -140,7 +157,8 @@ const seasonalColorProfiles = [
         { name: "Deep Olive", hex: "#556B2F" },
         { name: "Brick Red", hex: "#B22222" },
         { name: "Copper", hex: "#B87333" },
-        { name: "Teal", hex: "#008080" }
+        { name: "Teal", hex: "#008080" },
+        { name: "Golden Brown", hex: "#996515" }
       ]
     },
     {
@@ -149,6 +167,7 @@ const seasonalColorProfiles = [
       undertone: "cool",
       description: "Cool undertones with high contrast and rich, deep coloring.",
       estimatedPopulationPercent: 10,
+      metalAccents: "dark silver, gunmetal, platinum",
       colors: [
         { name: "Black", hex: "#000000" },
         { name: "Burgundy", hex: "#800020" },
@@ -156,7 +175,8 @@ const seasonalColorProfiles = [
         { name: "True Red", hex: "#FF0000" },
         { name: "Midnight Blue", hex: "#191970" },
         { name: "Emerald Green", hex: "#50C878" },
-        { name: "Cool White", hex: "#F8F8FF" }
+        { name: "Cool White", hex: "#F8F8FF" },
+        { name: "Plum", hex: "#8E4585" }
       ]
     },
     {
@@ -165,6 +185,7 @@ const seasonalColorProfiles = [
       undertone: "cool",
       description: "Cool, crisp undertones with bold, high-contrast coloring.",
       estimatedPopulationPercent: 10,
+      metalAccents: "silver, platinum, white gold",
       colors: [
         { name: "Crisp White", hex: "#FFFFFF" },
         { name: "Jet Black", hex: "#0A0A0A" },
@@ -172,7 +193,8 @@ const seasonalColorProfiles = [
         { name: "Fuchsia", hex: "#FF00FF" },
         { name: "Lemon Yellow", hex: "#FFF700" },
         { name: "Ruby Red", hex: "#9B111E" },
-        { name: "Icy Pink", hex: "#FFDEE9" }
+        { name: "Icy Pink", hex: "#FFDEE9" },
+        { name: "Sapphire", hex: "#0F52BA" }
       ]
     },
     {
@@ -181,6 +203,7 @@ const seasonalColorProfiles = [
       undertone: "cool",
       description: "Cool undertones with high clarity and vibrant contrasts.",
       estimatedPopulationPercent: 10,
+      metalAccents: "silver, white gold, polished platinum",
       colors: [
         { name: "Hot Pink", hex: "#FF69B4" },
         { name: "Bright Cyan", hex: "#00FFFF" },
@@ -188,9 +211,10 @@ const seasonalColorProfiles = [
         { name: "Snow White", hex: "#FFFAFA" },
         { name: "Electric Blue", hex: "#7DF9FF" },
         { name: "Cherry Red", hex: "#D2042D" },
-        { name: "Royal Blue", hex: "#4169E1" }
+        { name: "Royal Blue", hex: "#4169E1" },
+        { name: "Magenta", hex: "#FF00FF" }
       ]
     }
   ];
   
-export default seasonalColorProfiles;
+  export default seasonalColorProfiles;
