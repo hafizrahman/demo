@@ -71,8 +71,14 @@ Respond with ONLY one of these IDs (e.g., "light-spring"). If you cannot detect 
     
             const data = await result.json();
             console.log(data.result);
-            setAiResponse(data.result);
-            setColorProfileInfo(seasonalColorProfiles.find(profile => profile.id === data.result));
+
+            if (data.result === "none") {
+                setAiResponse("none");
+                setColorProfileInfo(undefined);
+            } else {
+                setAiResponse(data.result);
+                setColorProfileInfo(seasonalColorProfiles.find(profile => profile.id === data.result));
+            }
             
         } catch (err) {
             console.error("Image processing failed:", err);

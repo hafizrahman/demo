@@ -3,7 +3,7 @@ export default function ColorProfileSection({ colorProfile } : any) {
         <>
         <p>{ colorProfile.name }</p>
         <p>{ colorProfile.description }</p>
-        <p>Estimated population: { colorProfile.estimatedPopulationPercent }%</p>
+        <p>Estimated population with this tone: { colorProfile.estimatedPopulationPercent }%</p>
         <p>Undertone: { colorProfile.undertone }</p>
         <p>Color palette:</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
