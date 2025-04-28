@@ -16,11 +16,13 @@ import Image from "next/image";
 
 interface SkinAdvisorPickerProps {
     setIsLoading: (isLoading: boolean) => void;
+    handleSuccessfulSelection: () => void;
     onAnalysisComplete: (result: string) => void;
 }
 
 export default function SkinAdvisorPicker({
     setIsLoading,
+    handleSuccessfulSelection,
     onAnalysisComplete
 }: SkinAdvisorPickerProps) {
 
@@ -46,6 +48,7 @@ export default function SkinAdvisorPicker({
     };
 
     const handleFileSelection = (file: File) => {
+        handleSuccessfulSelection();
         setSelectedFile(file);
 
         // Clean up previous object URL if it exists
@@ -130,9 +133,10 @@ export default function SkinAdvisorPicker({
                             type="submit"
                             variant="contained"
                             disabled={!selectedFile}
-                            className="w-full text-white bg-gradient-to-r from-purple-500 to-white-500 hover:bg-gradient-to-l font-medium rounded-lg text-sm"
-                        >
+                            className="m-4 p-1 w-full rounded-full from-rose-400 via-fuchsia-500 to-indigo-500 bg-gradient-to-r"
+                        ><span className="">
                             ✨ Get color advice! ✨
+                            </span>
                         </Button>
                     </Stack>
                 </form>

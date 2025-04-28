@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
         // If demo mode is activated, return a random color season
         if (isDemo) {
             const seasons = [
+                'none', // occasionally return no skin detected case
                 'light-spring', 'true-spring', 'bright-spring',
                 'light-summer', 'true-summer', 'soft-summer',
                 'soft-autumn', 'true-autumn', 'deep-autumn',
@@ -68,7 +69,6 @@ export async function POST(req: NextRequest) {
              // Handle cases where it might be an object with a message property but not an Error instance
              errorMessage = error.message;
         }
-         // You could add more checks for other potential error types if needed
 
         return NextResponse.json(
             { error: errorMessage }, // Use the extracted or default message
