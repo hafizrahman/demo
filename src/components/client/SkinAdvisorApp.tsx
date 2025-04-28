@@ -3,16 +3,21 @@
 import { useState } from "react";
 import SkinAdvisorPicker from "./SkinAdvisorPicker";
 import SkinAdvisorResult from "./SkinAdvisorResult";
-import seasonalColorProfiles from "@/app/skin/seasonalColorProfiles";
+import seasonalColorProfiles from "@/app/lib/seasonalColorProfiles";
 
+interface ColorProfileInfo {
+    id: string;
+    name: string;
+    description: string;
+    colors: { name: string; hex: string }[];
+    metalAccents: string;
+}
 
 export default function SkinAdvisorApp() {
-    const [skinToneValue, setSkinToneValue] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [colorProfileInfo, setColorProfileInfo] = useState<any>();
+    const [colorProfileInfo, setColorProfileInfo] = useState<ColorProfileInfo>();
 
     const handleAnalysisComplete = (result: string) => {
-        setSkinToneValue(result);
         setIsLoading(false);
 
         if (result === "none") {
@@ -40,6 +45,7 @@ export default function SkinAdvisorApp() {
             <div className="w-full md:w-1/2 p-4 bg-gray-100 rounded-tr-lg rounded-br-lg">
                 <SkinAdvisorResult 
                     colorProfileInfo={colorProfileInfo}
+                    isLoading={isLoading}
                 />
             </div>
         </div>

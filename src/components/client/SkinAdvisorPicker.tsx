@@ -58,7 +58,6 @@ export default function SkinAdvisorPicker({
         setImagePreviewUrl(imageUrl);
     };
 
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!selectedFile) return;
@@ -66,7 +65,7 @@ export default function SkinAdvisorPicker({
         setIsLoading(true);
 
         try {
-            let base64Image = await resizeImageToBase64(selectedFile);
+            const base64Image = await resizeImageToBase64(selectedFile);
 
             const result = await fetch('/api/ai', {
                 method: 'POST',
@@ -113,10 +112,12 @@ export default function SkinAdvisorPicker({
                 <div className="rounded-lg backdrop-blur-sm bg-white/10 py-1">
                     {selectedFile &&
                         <div className="rounded-md border-1 border-white m-4">
-                            <img
+                            <Image
                                 alt={selectedFile.name}
                                 src={URL.createObjectURL(selectedFile)}
                                 className="w-full h-75 rounded-lg object-cover"
+                                width="512"
+                                height="512"
                             />
                         </div>
                     }

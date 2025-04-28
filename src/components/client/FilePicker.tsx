@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@mui/material";
-import Card from '@mui/material/Card';
 import { CloudUpload } from "@mui/icons-material";
 import { useFilePicker } from "use-file-picker";
 import {
@@ -14,7 +13,7 @@ interface FilePickerProps {
 }
 
 export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps) {
-    const { openFilePicker, filesContent, loading, errors } = useFilePicker({
+    const { openFilePicker, loading, errors } = useFilePicker({
         accept: ".png, .jpg, .jpeg",
         multiple: false,
         readAs: "DataURL",
@@ -22,7 +21,7 @@ export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps
             new FileAmountLimitValidator({ max: 1 }),
             new FileTypeValidator(['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG']),
         ],
-        onFilesSuccessfullySelected: ({ plainFiles, filesContent }) => {
+        onFilesSuccessfullySelected: ({ plainFiles }) => {
             handleSuccesfulSelection(plainFiles[0])
             console.log('onFilesSuccessfullySelected', plainFiles[0]);
         },

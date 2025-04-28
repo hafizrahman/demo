@@ -3,16 +3,22 @@
 import { Button, Card, Stack } from "@mui/material";
 import FilePicker from "@/components/client/FilePicker";
 import { useState } from "react";
-import seasonalColorProfiles from "@/app/skin/seasonalColorProfiles";
+import seasonalColorProfiles from "@/app/lib/seasonalColorProfiles";
 import ColorProfileSection from "./ColorProfileSection";
 import Resizer from "react-image-file-resizer";
 
+interface ColorProfileInfo {
+    id: string;
+    name: string;
+    description: string;
+    colors: { name: string; hex: string }[];
+    metalAccents: string;
+}
+
 export default function FilePickerAndResult() {
     const [selectedFile, setSelectedFile] = useState<File>();
-    const [base64Image, setBase64Image] = useState<string>();
     const [aiResponse, setAiResponse] = useState<string>();
-    const [colorProfileInfo, setColorProfileInfo] = useState<any>();
-    const randomItem = seasonalColorProfiles[Math.floor(Math.random() * seasonalColorProfiles.length)];
+    const [colorProfileInfo, setColorProfileInfo] = useState<ColorProfileInfo>();
 
     const seasonalColorAnalysisPrompt = `Analyze the skin tone in this image and determine which of the 12 seasonal color archetypes it most closely matches. The archetypes are:
 

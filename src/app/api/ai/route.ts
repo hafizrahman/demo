@@ -13,10 +13,6 @@ interface RequestBody {
     isDemo: boolean;
 }
 
-export async function GET(request: Request) {
-    return new Response("Hello, Next.js!");
-}
-
 export async function POST(req: NextRequest) {
     try {
         // Parse request body
@@ -57,10 +53,25 @@ export async function POST(req: NextRequest) {
         const responseText = response.output_text || "No response text available";
         return NextResponse.json({ result: responseText });
 
-    } catch (error: any) {
+    } catch (error: unknown) { // <--- Use unknown here
         console.error('OpenAI Proxy Error:', error);
+
+        // --- Type Checking ---
+        let errorMessage = 'Failed to process image'; // Default message
+        if (error instanceof Error) {
+            // If it's an actual Error object, we can safely access .message
+            errorMessage = error.message;
+        } else if (typeof error === 'string') {
+            // If a string was thrown
+            errorMessage = error;
+        } else if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string') {
+             // Handle cases where it might be an object with a message property but not an Error instance
+             errorMessage = error.message;
+        }
+         // You could add more checks for other potential error types if needed
+
         return NextResponse.json(
-            { error: error?.message || 'Failed to process image' },
+            { error: errorMessage }, // Use the extracted or default message
             { status: 500 }
         );
     }

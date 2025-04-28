@@ -1,4 +1,21 @@
-export default function ColorProfileSection({ colorProfile }: any) {
+'use client';
+
+interface ColorProfileSectionProps {
+    colorProfile: {
+        id: string;
+        name: string;
+        description: string;
+        colors: ColorInfo[];
+        metalAccents: string;
+    }
+}
+
+interface ColorInfo {
+    name: string;
+    hex: string;
+}
+
+export default function ColorProfileSection({ colorProfile }: ColorProfileSectionProps) {
     return (
         <>
         <h2 className="text-xl font-bold">Your skin tone color analysis result:</h2>
@@ -11,7 +28,7 @@ export default function ColorProfileSection({ colorProfile }: any) {
             <h2 className="text-xl font-bold mt-8">Recommended color palette</h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 bg-gray-100 rounded-lg p-4">
-                {colorProfile.colors.map((color: any, index: number) => (
+                {colorProfile.colors.map((color: ColorInfo, index: number) => (
                     <div key={index} className="flex flex-col items-center">
                         <div
                             className="w-32 h-16 rounded-md"

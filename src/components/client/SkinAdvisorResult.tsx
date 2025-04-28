@@ -1,9 +1,19 @@
 'use client';
 import Image from 'next/image'
 import ColorProfileSection from "./ColorProfileSection";
-import { useState } from "react";
 
-export default function SkinAdvisorResult({ colorProfileInfo }: any) {
+interface SkinAdvisorResultProps {
+    colorProfileInfo: {
+        id: string;
+        name: string;
+        description: string;
+        colors: { name: string; hex: string }[];
+        metalAccents: string;
+    } | null,
+    isLoading: boolean;
+}
+
+export default function SkinAdvisorResult({ colorProfileInfo }: SkinAdvisorResultProps) {
 
     return (
         <div className="flex flex-col p-8 h-full bg-white rounded-lg">
