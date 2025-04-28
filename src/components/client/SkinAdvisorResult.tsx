@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image'
 import ColorProfileSection from "./ColorProfileSection";
 
 interface ColorProfileInfo {
