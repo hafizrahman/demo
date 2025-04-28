@@ -60,7 +60,6 @@ Respond with ONLY one of these IDs (e.g., "light-spring"). If you cannot detect 
     
         try {
             const base64 = await resizeImageToBase64(selectedFile);
-            setBase64Image(base64);
             console.log("Base64 ready:", base64);
     
             const result = await fetch('/api/ai', {

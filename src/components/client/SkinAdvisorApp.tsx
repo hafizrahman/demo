@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import SkinAdvisorPicker from "./SkinAdvisorPicker";
 import SkinAdvisorResult from "./SkinAdvisorResult";
 import seasonalColorProfiles from "@/app/lib/seasonalColorProfiles";
@@ -43,10 +44,20 @@ export default function SkinAdvisorApp() {
                 />
             </div>
             <div className="w-full md:w-1/2 p-4 bg-gray-100 rounded-tr-lg rounded-br-lg">
-                <SkinAdvisorResult 
-                    colorProfileInfo={colorProfileInfo}
-                    isLoading={isLoading}
-                />
+                {isLoading ? (
+                    <div className="flex justify-center items-center h-full">
+                        <p>Loading...</p>
+                    </div>
+                ) : colorProfileInfo ? (
+                    <SkinAdvisorResult
+                        colorProfileInfo={colorProfileInfo}
+                    />
+                ) : (
+                    <div className="flex flex-col p-8 h-full bg-white rounded-lg items-center justify-center">
+                        <Image alt="Please pick an image first" src="/face.png" width={256} height={256} />
+                        <h2 className="text-md mt-4 mb-4">Your result will appear here.</h2>
+                    </div>
+                )}
             </div>
         </div>
     )
