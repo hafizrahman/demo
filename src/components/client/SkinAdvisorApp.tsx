@@ -33,7 +33,7 @@ export default function SkinAdvisorApp() {
             <div className="w-full md:w-1/2 p-4">
                 <div className="flex items-center gap-4 mb-8">
                     <div>
-                        <h1 className="text-2xl font-bold ${barrio.variable}">Skin Tone Color Advisor</h1>
+                        <h1 className="text-2xl font-bold">Skin Tone Color Advisor</h1>
                         <p>Select a selfie photo and our AI will recommend great colors options that will complement your skin well.</p>
                     </div>
                 </div>

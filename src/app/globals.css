@@ -12,12 +12,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/*
+
+Avoid dark theme difference for now
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+*/
 
 body {
   background: var(--background);
