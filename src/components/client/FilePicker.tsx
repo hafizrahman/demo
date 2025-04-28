@@ -41,21 +41,12 @@ export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps
         <>
             <Button
                 startIcon={<CloudUpload />}
-                variant="contained"
+                variant="outlined"
                 onClick={() => openFilePicker()}
-                className="w-full"
+                className="w-full text-white bg-gradient-to-r from-cyan-50 to-cyan-10 hover:bg-gradient-to-bl rounded-md"
             >Select files </Button>
-            <p className="text-sm italic mt-4">Supported file types: .jpg, .png, .png</p>
+            <p className="text-xs italic mt-2 text-center">Supported file types: .jpg, .png</p>
             <br />
-            {filesContent.map((file, index) => (
-                <div key={index} className="not-prose overflow-auto rounded-lg bg-white outline outline-black/5 dark:bg-gray-950/50 p-2">
-                    <img
-                        alt={file.name}
-                        src={file.content}
-                        className="mx-auto h-64 w-full rounded-lg object-cover"
-                    />
-                </div>
-            ))}
         </>
     );
 }
