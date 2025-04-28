@@ -9,8 +9,8 @@ const openai = new OpenAI({
 
 interface RequestBody {
     imageBase64: string;
-    prompt?: string;
-    isDemo?: boolean;
+    prompt: string;
+    isDemo: boolean;
 }
 
 export async function GET(request: Request) {
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
                             type: "input_image",
                             image_url: `${imageBase64}`,
                             detail: "low"
-                        }
+                        },
                     ],
                 },
             ],

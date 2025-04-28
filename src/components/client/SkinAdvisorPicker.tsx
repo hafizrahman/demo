@@ -76,7 +76,7 @@ export default function SkinAdvisorPicker({
                 body: JSON.stringify({
                     imageBase64: base64Image,
                     prompt: seasonalColorAnalysisPrompt,
-                    isDemo: true, // Set to true for demo mode, false for real API call
+                    isDemo: false, // Set to true for demo mode, false for real API call
                 }),
             });
 
