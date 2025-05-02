@@ -7,12 +7,28 @@ import {
     FileAmountLimitValidator,
     FileTypeValidator
 } from 'use-file-picker/validators';
+import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 interface FilePickerProps {
     handleSuccesfulSelection(imageFile: File): void;
 }
 
+const MotionButton = motion.create(Button);
+
 export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps) {
+    const controls = useAnimation();
+
+    interface ButtonStatus {
+        clicked: boolean;
+        shake: boolean;
+    }
+
+    const [buttonStatus, setButtonStatus] = useState<ButtonStatus>({
+        clicked: false,
+        shake: false,
+    });
+
     const { openFilePicker, loading, errors } = useFilePicker({
         accept: ".png, .jpg, .jpeg",
         multiple: false,
@@ -27,6 +43,25 @@ export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps
         },
     });
 
+    useEffect(() => {
+        if (buttonStatus.clicked) return; // If already clicked, no need to set timer
+
+        const timer = setTimeout(() => {
+            setButtonStatus((prevStatus) => ({ ...prevStatus, shake: true }));
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, [buttonStatus.clicked]);
+
+    useEffect(() => {
+        if (buttonStatus.shake) {
+            controls.start({
+                x: [0, -5, 5, -5, 5, 0],
+                transition: { duration: 0.5 },
+            });
+        }
+    }, [buttonStatus.shake, controls]);
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -38,12 +73,16 @@ export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps
 
     return (
         <>
-            <Button
+            <MotionButton
+                animate={controls}
                 startIcon={<CloudUpload />}
                 variant="outlined"
-                onClick={() => openFilePicker()}
+                onClick={() => {
+                    setButtonStatus({ clicked: true, shake: false }); // no need to shake if clicked 
+                    openFilePicker();
+                }}
                 className="w-full text-white bg-gradient-to-r from-cyan-50 to-cyan-10 hover:bg-gradient-to-bl rounded-md"
-            >Select files </Button>
+            >Select files </MotionButton>
             <p className="text-xs italic mt-2 text-center">Supported file types: .jpg, .png</p>
             <br />
         </>
