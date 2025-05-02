@@ -5,6 +5,7 @@ import Image from "next/image";
 import SkinAdvisorPicker from "./SkinAdvisorPicker";
 import SkinAdvisorResult from "./SkinAdvisorResult";
 import seasonalColorProfiles from "@/app/lib/seasonalColorProfiles";
+import { motion } from "framer-motion";
 
 interface ColorProfileInfo {
     id: string;
@@ -13,6 +14,8 @@ interface ColorProfileInfo {
     colors: { name: string; hex: string }[];
     metalAccents: string;
 }
+
+const MotionImage = motion.create(Image);
 
 export default function SkinAdvisorApp() {
     const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +75,14 @@ export default function SkinAdvisorApp() {
                 )}
                 {!isLoading && !colorProfileInfo && !resultFailed && (
                     <div className="flex flex-col p-8 h-full bg-white rounded-lg items-center justify-center">
-                        <Image alt="Please pick an image first" src="/face.png" width={256} height={256} />
+                        <MotionImage
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.4,
+                                scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                            }}
+                            alt="Please pick an image first" src="/face.png" width={256} height={256} />
                         <h2 className="text-md mt-4 mb-4">Your result will appear here.</h2>
                     </div>
                 )}
