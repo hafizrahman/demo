@@ -44,13 +44,13 @@ export default function FilePicker({ handleSuccesfulSelection }: FilePickerProps
     });
 
     useEffect(() => {
-        if (buttonStatus.clicked) return; // If already clicked, no need to set timer
-
-        const timer = setTimeout(() => {
-            setButtonStatus((prevStatus) => ({ ...prevStatus, shake: true }));
+        if (buttonStatus.clicked) return; // Stop shaking if clicked
+    
+        const interval = setInterval(() => {
+            setButtonStatus((prevStatus) => ({ ...prevStatus, shake: !prevStatus.shake }));
         }, 3000);
-
-        return () => clearTimeout(timer);
+    
+        return () => clearInterval(interval);
     }, [buttonStatus.clicked]);
 
     useEffect(() => {
